@@ -1,6 +1,7 @@
 
 # binary or source
 default['google_auth_proxy']['install_method'] = 'binary'
+default['google_auth_proxy']['version'] = '1.0'
 
 default['google_auth_proxy']['archive_path'] = 'google_auth_proxy-1.0.linux-amd64.go1.3/google_auth_proxy'
 default['google_auth_proxy']['bin_path'] = '/usr/bin'
@@ -11,7 +12,7 @@ default['google_auth_proxy']['source_golange_package'] = 'github.com/bitly/googl
 default['google_auth_proxy']['auto_restart'] = true
 
 default['google_auth_proxy']['cookie_expire'] = '168h'
-default['google_auth_proxy']['cookie_https_only'] = true
+default['google_auth_proxy']['cookie_secure'] = true
 default['google_auth_proxy']['cookie_httponly'] = true
 default['google_auth_proxy']['pass_basic_auth'] = true
 default['google_auth_proxy']['basic_auth_password'] = ''

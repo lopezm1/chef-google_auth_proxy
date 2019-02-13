@@ -12,12 +12,19 @@ pass_user_headers = <%= @pass_user_headers %>
 basic_auth_password = "<%= @basic_auth_password %>"
 <% end -%>
 
-
-google_apps_domains = [
-<% @google_apps_domains.each do |d| %>
+<% if @google_auth_version > 2.0 -%>
+email_domain = [
+<% @email_domains.each do |d| %>
   "<%= d %>"
 <% end %>
 ]
+<% else -%>
+google_apps_domains = [
+<% @email_domains.each do |d| %>
+  "<%= d %>"
+<% end %>
+]
+<% end -%>
 
 client_id = "<%= @client_id %>"
 client_secret = "<%= @client_secret %>"
@@ -28,5 +35,10 @@ htpasswd_file = "<%= @htpasswd_file %>"
 cookie_secret = "<%= @cookie_secret %>"
 cookie_domain = "<%= @cookie_domain %>"
 cookie_expire = "<%= @cookie_expire %>"
-cookie_https_only = <%= @cookie_https_only %>
+<% if @google_auth_version > 2.0 -%>
+cookie_secure = <%= @cookie_secure %>
 cookie_httponly = <%= @cookie_httponly %>
+<% else -%>
+cookie_https_only = <%= @cookie_secure %>
+cookie_httponly = <%= @cookie_httponly %>
+<% end -%>
